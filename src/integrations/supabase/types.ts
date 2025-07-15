@@ -44,6 +44,24 @@ export type Database = {
         }
         Relationships: []
       }
+      results: {
+        Row: {
+          created_at: string | null
+          id: number
+          persona_key: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          persona_key: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          persona_key?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
