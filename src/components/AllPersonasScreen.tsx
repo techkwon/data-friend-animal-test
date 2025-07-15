@@ -103,36 +103,107 @@ const AllPersonasScreen = ({ onBack }: AllPersonasScreenProps) => {
           />
         </div>
 
-        {/* 선택된 페르소나 상세 정보 */}
+        {/* 선택된 페르소나 상세 정보 - 모바일 최적화 */}
         {selectedPersona && (
           <Card className="border-0 shadow-card mb-8 animate-slide-up">
-            <CardContent className="p-8">
-              <div className="flex items-start gap-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden shadow-soft border-4 border-white flex-shrink-0">
+            <CardContent className="p-4 sm:p-8">
+              {/* 모바일에서는 세로 배치, 데스크톱에서는 가로 배치 */}
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shadow-soft border-4 border-white flex-shrink-0">
                   <img 
                     src={animalPersonas[selectedPersona].image} 
                     alt={animalPersonas[selectedPersona].name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-foreground mb-2">
+                <div className="flex-1 text-center sm:text-left">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
                     {animalPersonas[selectedPersona].name}
                   </h2>
-                  <p className="text-lg text-muted-foreground mb-4">
+                  <p className="text-base sm:text-lg text-muted-foreground mb-4 leading-relaxed">
                     {animalPersonas[selectedPersona].summary}
                   </p>
+                  
+                  {/* 통계 정보 */}
+                  {!loading && statistics[selectedPersona] && (
+                    <div className="bg-gradient-warm/10 rounded-lg p-3 mb-4 inline-block">
+                      <div className="text-center">
+                        <div className="text-xl sm:text-2xl font-bold text-primary">
+                          {statistics[selectedPersona].percentage}%
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          {statistics[selectedPersona].count}명이 선택
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="bg-primary/5 rounded-lg p-4">
-                    <h3 className="font-semibold text-foreground mb-2">특징</h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                      <span>🎯</span>
+                      <span>특징</span>
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
                       {animalPersonas[selectedPersona].tendency}
                     </p>
                   </div>
+
+                  {/* 강점과 팁 정보 추가 */}
+                  <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                    <div className="bg-quiz-success/10 rounded-lg p-4">
+                      <h4 className="font-semibold text-quiz-success mb-2 flex items-center gap-2">
+                        <span>💪</span>
+                        <span>강점</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                        {animalPersonas[selectedPersona].strengths}
+                      </p>
+                    </div>
+                    <div className="bg-quiz-warning/10 rounded-lg p-4">
+                      <h4 className="font-semibold text-quiz-warning mb-2 flex items-center gap-2">
+                        <span>💡</span>
+                        <span>개선 팁</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                        {animalPersonas[selectedPersona].tips}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 짝꿍 정보 */}
+                  <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                    <div className="bg-quiz-success/10 rounded-lg p-3">
+                      <h4 className="font-semibold text-quiz-success mb-2 text-sm flex items-center gap-1">
+                        <span>💚</span>
+                        <span>환상의 짝꿍</span>
+                      </h4>
+                      <p className="text-xs font-medium text-foreground mb-1">
+                        {animalPersonas[selectedPersona].fantasticDuo.animal}
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {animalPersonas[selectedPersona].fantasticDuo.reason}
+                      </p>
+                    </div>
+                    <div className="bg-destructive/10 rounded-lg p-3">
+                      <h4 className="font-semibold text-destructive mb-2 text-sm flex items-center gap-1">
+                        <span>❤️‍🔥</span>
+                        <span>환장의 짝꿍</span>
+                      </h4>
+                      <p className="text-xs font-medium text-foreground mb-1">
+                        {animalPersonas[selectedPersona].nightmareDuo.animal}
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {animalPersonas[selectedPersona].nightmareDuo.reason}
+                      </p>
+                    </div>
+                  </div>
                 </div>
+                
+                {/* 닫기 버튼 - 모바일에서는 하단, 데스크톱에서는 우상단 */}
                 <Button
                   variant="outline"
                   onClick={() => setSelectedPersona(null)}
-                  className="text-sm"
+                  className="sm:self-start order-first sm:order-last text-sm px-6 py-2"
                 >
                   닫기
                 </Button>
@@ -142,7 +213,7 @@ const AllPersonasScreen = ({ onBack }: AllPersonasScreenProps) => {
         )}
 
         {/* 페르소나 그리드 */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredPersonas.map((persona, index) => (
             <Card 
               key={persona.key}
@@ -152,15 +223,15 @@ const AllPersonasScreen = ({ onBack }: AllPersonasScreenProps) => {
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedPersona(selectedPersona === persona.key ? null : persona.key)}
             >
-              <CardContent className="p-6 text-center">
-                <div className="w-20 h-20 mx-auto rounded-full overflow-hidden shadow-soft border-4 border-white mb-4">
+              <CardContent className="p-4 sm:p-6 text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full overflow-hidden shadow-soft border-4 border-white mb-3 sm:mb-4">
                   <img 
                     src={persona.image} 
                     alt={persona.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="font-bold text-foreground mb-2 text-lg">
+                <h3 className="font-bold text-foreground mb-2 text-base sm:text-lg">
                   {persona.name}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -168,15 +239,15 @@ const AllPersonasScreen = ({ onBack }: AllPersonasScreenProps) => {
                 </p>
 
                 {/* 통계 정보 표시 */}
-                <div className="bg-gradient-warm/10 rounded-lg p-3 mb-4">
+                <div className="bg-gradient-warm/10 rounded-lg p-2 sm:p-3 mb-3 sm:mb-4">
                   {loading ? (
-                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                      <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                       <Loader2 className="w-3 h-3 animate-spin" />
                       <span>통계 로딩중...</span>
                     </div>
                   ) : (
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">
+                      <div className="text-lg sm:text-2xl font-bold text-primary">
                         {statistics[persona.key]?.percentage || 0}%
                       </div>
                       <div className="text-xs text-muted-foreground">
@@ -187,7 +258,7 @@ const AllPersonasScreen = ({ onBack }: AllPersonasScreenProps) => {
                 </div>
                 
                 {/* 간단한 특성 표시 */}
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-muted-foreground">환상의 짝꿍:</span>
                     <span className="text-quiz-success font-medium">
@@ -202,11 +273,11 @@ const AllPersonasScreen = ({ onBack }: AllPersonasScreenProps) => {
                   </div>
                 </div>
 
-                <div className="mt-3 pt-4 border-t border-border">
+                <div className="mt-3 pt-3 sm:pt-4 border-t border-border">
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="w-full text-primary hover:bg-primary/10"
+                    className="w-full text-primary hover:bg-primary/10 text-xs sm:text-sm"
                   >
                     {selectedPersona === persona.key ? '상세 정보 닫기' : '상세 정보 보기'}
                   </Button>
