@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Share2, RotateCcw, Grid3X3, Loader2 } from "lucide-react";
-import { AnimalPersona } from "@/data/quizData";
+import { AnimalPersona, animalPersonas } from "@/data/quizData";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -57,7 +57,7 @@ const ResultScreen = ({ persona, totalScore, onRestart, onViewAll }: ResultScree
   }, [persona.key, toast]);
 
   const handleShare = async () => {
-    const shareText = `🎯 데이터 보안 습관 테스트 결과!\n\n🦊 나는 "${persona.name}"!\n${persona.summary}\n\n💡 총점: ${totalScore}점${stats ? `\n📊 같은 유형: 전체의 ${stats.percentage}%` : ''}\n\n🔗 나도 테스트 해보기: ${window.location.origin}`;
+    const shareText = `🎯 데이터 보안 습관 테스트 결과!\n\n🦊 나는 "${persona.name}"!\n${persona.summary}${stats ? `\n\n📊 같은 유형: 전체의 ${stats.percentage}%` : ''}\n\n🔗 나도 테스트 해보기: ${window.location.origin}`;
 
     try {
       if (navigator.share) {
@@ -105,11 +105,6 @@ const ResultScreen = ({ persona, totalScore, onRestart, onViewAll }: ResultScree
                 alt={persona.name}
                 className="w-full h-full object-cover"
               />
-            </div>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-              <Badge className="bg-gradient-primary text-white px-4 py-1 text-lg font-semibold">
-                {totalScore}점
-              </Badge>
             </div>
           </div>
 
@@ -197,9 +192,18 @@ const ResultScreen = ({ persona, totalScore, onRestart, onViewAll }: ResultScree
                 💚 환상의 짝꿍
               </h3>
               <div className="bg-quiz-success/10 rounded-lg p-4">
-                <p className="font-semibold text-quiz-success mb-2">
-                  {persona.fantasticDuo.animal}
-                </p>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                    <img 
+                      src={Object.values(animalPersonas).find(p => p.name === persona.fantasticDuo.animal)?.image} 
+                      alt={persona.fantasticDuo.animal}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-semibold text-quiz-success">
+                    {persona.fantasticDuo.animal}
+                  </p>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   {persona.fantasticDuo.reason}
                 </p>
@@ -213,9 +217,18 @@ const ResultScreen = ({ persona, totalScore, onRestart, onViewAll }: ResultScree
                 ❤️‍🔥 환장의 짝꿍
               </h3>
               <div className="bg-destructive/10 rounded-lg p-4">
-                <p className="font-semibold text-destructive mb-2">
-                  {persona.nightmareDuo.animal}
-                </p>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                    <img 
+                      src={Object.values(animalPersonas).find(p => p.name === persona.nightmareDuo.animal)?.image} 
+                      alt={persona.nightmareDuo.animal}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-semibold text-destructive">
+                    {persona.nightmareDuo.animal}
+                  </p>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   {persona.nightmareDuo.reason}
                 </p>
