@@ -67,7 +67,7 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
         {/* 질문 카드 */}
         <Card className="border-0 shadow-card mb-8 animate-slide-up">
           <CardContent className="p-8">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-6 sm:mb-8 leading-relaxed">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-6 sm:mb-8 leading-relaxed whitespace-pre-line">
               {question.question}
             </h2>
 
@@ -93,7 +93,7 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
                         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full m-0.5 sm:m-1" />
                       )}
                     </div>
-                    <span className="text-sm sm:text-base md:text-lg leading-relaxed">
+                    <span className="text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
                       {option.text}
                     </span>
                   </div>

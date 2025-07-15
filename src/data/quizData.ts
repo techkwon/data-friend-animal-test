@@ -44,25 +44,25 @@ export interface AnimalPersona {
 export const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question: "새로운 교육용 앱을 사용하기 전에 어떻게 하시나요?",
+    question: "새로운 교육용 앱을 사용하기 전에\n어떻게 하시나요?",
     options: [
       {
-        text: "바로 사용해본다. 시간이 중요하니까!",
+        text: "바로 사용해본다.\n시간이 중요하니까!",
         score: 1,
         weights: { panda: 4, dog: 3, cat: 2 }
       },
       {
-        text: "간단히 개인정보처리방침만 확인한다",
+        text: "간단히 개인정보처리방침만\n확인한다",
         score: 2,
         weights: { bear: 3, squirrel: 2, turtle: 2, cat: 1 }
       },
       {
-        text: "개인정보처리방침과 이용약관을 꼼꼼히 읽어본다",
+        text: "개인정보처리방침과 이용약관을\n꼼꼼히 읽어본다",
         score: 3,
         weights: { owl: 4, elephant: 3, desertFox: 2 }
       },
       {
-        text: "동료들에게 먼저 물어보고 검토 후 사용한다",
+        text: "동료들에게 먼저 물어보고\n검토 후 사용한다",
         score: 4,
         weights: { rabbit: 4, elephant: 2, owl: 2 }
       }
@@ -70,25 +70,25 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 2,
-    question: "학교에서 사용하는 기기의 비밀번호는 어떻게 설정하시나요?",
+    question: "학교에서 사용하는 기기의\n비밀번호는 어떻게 설정하시나요?",
     options: [
       {
-        text: "123456 같은 간단한 번호로 설정",
+        text: "123456 같은\n간단한 번호로 설정",
         score: 1,
         weights: { panda: 4, dog: 3 }
       },
       {
-        text: "생년월일이나 전화번호 등 기억하기 쉬운 개인정보",
+        text: "생년월일이나 전화번호 등\n기억하기 쉬운 개인정보",
         score: 2,
         weights: { cat: 2, turtle: 1, bear: 1 }
       },
       {
-        text: "영문+숫자 조합으로 8자리 이상",
+        text: "영문+숫자 조합으로\n8자리 이상",
         score: 3,
         weights: { squirrel: 3, bear: 3, dog: 1 }
       },
       {
-        text: "영문+숫자+특수문자 조합으로 복잡하게 설정",
+        text: "영문+숫자+특수문자 조합으로\n복잡하게 설정",
         score: 4,
         weights: { owl: 4, elephant: 3, desertFox: 2, rabbit: 1 }
       }
@@ -96,25 +96,25 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 3,
-    question: "학생 정보가 담긴 USB를 분실했을 때 어떻게 대응하시나요?",
+    question: "학생 정보가 담긴 USB를 분실했을 때\n어떻게 대응하시나요?",
     options: [
       {
-        text: "아마 집 어딘가에 있을 것이다. 며칠 더 찾아본다",
+        text: "아마 집 어딘가에 있을 것이다.\n며칠 더 찾아본다",
         score: 1,
         weights: { panda: 3, cat: 2 }
       },
       {
-        text: "동료 교사들에게 물어보고 하루 정도 더 찾아본다",
+        text: "동료 교사들에게 물어보고\n하루 정도 더 찾아본다",
         score: 2,
         weights: { dog: 2, turtle: 2, bear: 1 }
       },
       {
-        text: "바로 학교 관리자에게 보고한다",
+        text: "바로 학교 관리자에게\n보고한다",
         score: 3,
         weights: { squirrel: 2, elephant: 2, rabbit: 1 }
       },
       {
-        text: "즉시 학교와 교육청에 보고하고 필요시 경찰신고도 고려한다",
+        text: "즉시 학교와 교육청에 보고하고\n필요시 경찰신고도 고려한다",
         score: 4,
         weights: { desertFox: 3, owl: 2, elephant: 1 }
       }

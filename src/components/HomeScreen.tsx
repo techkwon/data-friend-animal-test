@@ -20,15 +20,29 @@ const HomeScreen = ({ onStart }: HomeScreenProps) => {
             <br />
             <span className="text-primary">데이터 보안 습관 테스트</span>
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
             교사를 위한 재미있는 보안 성향 진단 퀴즈
             <br className="hidden sm:block" />
             나만의 동물 페르소나를 발견하고 보안 습관을 점검해보세요!
           </p>
+
+          {/* 시작 버튼을 위로 이동 */}
+          <div className="animate-slide-up mb-12">
+            <Button 
+              onClick={onStart}
+              size="lg"
+              className="bg-gradient-primary hover:opacity-90 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-card hover:shadow-glow transition-all duration-300 hover:scale-105"
+            >
+              🎯 테스트 시작하기
+            </Button>
+            <p className="text-sm text-muted-foreground mt-4">
+              약 5분이 소요됩니다
+            </p>
+          </div>
         </div>
 
         {/* 특징 카드들 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
           <Card className="border-0 shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-6 text-center">
               <div className="w-12 h-12 bg-quiz-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -70,22 +84,9 @@ const HomeScreen = ({ onStart }: HomeScreenProps) => {
           </Card>
         </div>
 
-        {/* 시작 버튼 */}
-        <div className="text-center animate-slide-up">
-          <Button 
-            onClick={onStart}
-            size="lg"
-            className="bg-gradient-primary hover:opacity-90 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-card hover:shadow-glow transition-all duration-300 hover:scale-105"
-          >
-            🎯 테스트 시작하기
-          </Button>
-          <p className="text-sm text-muted-foreground mt-4">
-            약 5분이 소요됩니다
-          </p>
-        </div>
 
         {/* 설명 섹션 */}
-        <div className="mt-16 bg-card rounded-2xl p-8 shadow-card">
+        <div className="mt-12 bg-card rounded-2xl p-8 shadow-card">
           <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
             이런 분들에게 추천해요! 🎯
           </h2>
