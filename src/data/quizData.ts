@@ -49,22 +49,22 @@ export const quizQuestions: QuizQuestion[] = [
       {
         text: "바로 사용해본다. 시간이 중요하니까!",
         score: 1,
-        weights: { panda: 3, dog: 2, cat: 1 }
+        weights: { panda: 4, dog: 3, cat: 2 }
       },
       {
         text: "간단히 개인정보처리방침만 확인한다",
         score: 2,
-        weights: { bear: 2, squirrel: 2, turtle: 1 }
+        weights: { bear: 3, squirrel: 2, turtle: 2, cat: 1 }
       },
       {
         text: "개인정보처리방침과 이용약관을 꼼꼼히 읽어본다",
         score: 3,
-        weights: { desertFox: 3, owl: 2, elephant: 2 }
+        weights: { owl: 4, elephant: 3, desertFox: 2 }
       },
       {
         text: "동료들에게 먼저 물어보고 검토 후 사용한다",
         score: 4,
-        weights: { rabbit: 3, elephant: 2, owl: 1 }
+        weights: { rabbit: 4, elephant: 2, owl: 2 }
       }
     ]
   },
@@ -75,7 +75,7 @@ export const quizQuestions: QuizQuestion[] = [
       {
         text: "123456 같은 간단한 번호로 설정",
         score: 1,
-        weights: { panda: 3, dog: 2 }
+        weights: { panda: 4, dog: 3 }
       },
       {
         text: "생년월일이나 전화번호 등 기억하기 쉬운 개인정보",
@@ -85,12 +85,12 @@ export const quizQuestions: QuizQuestion[] = [
       {
         text: "영문+숫자 조합으로 8자리 이상",
         score: 3,
-        weights: { squirrel: 2, bear: 2, dog: 1 }
+        weights: { squirrel: 3, bear: 3, dog: 1 }
       },
       {
         text: "영문+숫자+특수문자 조합으로 복잡하게 설정",
         score: 4,
-        weights: { desertFox: 3, owl: 2, elephant: 2, rabbit: 1 }
+        weights: { owl: 4, elephant: 3, desertFox: 2, rabbit: 1 }
       }
     ]
   },
@@ -532,7 +532,7 @@ export const animalPersonas: Record<string, AnimalPersona> = {
 
 // 채점 매트릭스 - 각 동물별 가중치 총합으로 결과 결정
 export const SCORING_MATRIX = {
-  priorities: ['desertFox', 'owl', 'elephant', 'squirrel', 'rabbit', 'bear', 'cat', 'turtle', 'dog', 'panda']
+  priorities: ['panda', 'dog', 'cat', 'turtle', 'bear', 'squirrel', 'rabbit', 'elephant', 'owl', 'desertFox']
 };
 
 // 총점과 가중치를 계산해서 최종 페르소나를 결정하는 함수

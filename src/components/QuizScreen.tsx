@@ -67,7 +67,7 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
         {/* 질문 카드 */}
         <Card className="border-0 shadow-card mb-8 animate-slide-up">
           <CardContent className="p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 leading-relaxed">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-6 sm:mb-8 leading-relaxed">
               {question.question}
             </h2>
 
@@ -76,7 +76,7 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
                 <Button
                   key={index}
                   variant="outline"
-                  className={`w-full p-6 h-auto text-left justify-start transition-all duration-200 ${
+                  className={`w-full p-4 sm:p-6 h-auto text-left justify-start transition-all duration-200 ${
                     selectedOption === index
                       ? 'border-primary bg-primary/5 shadow-soft'
                       : 'border-border hover:border-primary/50 hover:bg-primary/5'
@@ -84,16 +84,16 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
                   onClick={() => handleOptionSelect(index)}
                 >
                   <div className="flex items-start">
-                    <div className={`w-6 h-6 rounded-full border-2 mr-4 mt-1 flex-shrink-0 transition-colors ${
+                    <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 mr-3 sm:mr-4 mt-1 flex-shrink-0 transition-colors ${
                       selectedOption === index 
                         ? 'border-primary bg-primary' 
                         : 'border-muted-foreground'
                     }`}>
                       {selectedOption === index && (
-                        <div className="w-2 h-2 bg-white rounded-full m-1" />
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full m-0.5 sm:m-1" />
                       )}
                     </div>
-                    <span className="text-base md:text-lg leading-relaxed">
+                    <span className="text-sm sm:text-base md:text-lg leading-relaxed">
                       {option.text}
                     </span>
                   </div>
@@ -104,11 +104,11 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
         </Card>
 
         {/* 네비게이션 버튼 */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <Button
             variant="outline"
             onClick={handlePrevious}
-            className="flex items-center gap-2 px-6 py-3"
+            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto order-2 sm:order-1"
           >
             <ArrowLeft className="w-4 h-4" />
             {currentQuestion === 0 ? '처음으로' : '이전'}
@@ -117,7 +117,7 @@ const QuizScreen = ({ onComplete, onBack }: QuizScreenProps) => {
           <Button
             onClick={handleNext}
             disabled={selectedOption === null}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-primary hover:opacity-90 text-white disabled:opacity-50"
+            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-primary hover:opacity-90 text-white disabled:opacity-50 w-full sm:w-auto order-1 sm:order-2"
           >
             {currentQuestion === quizQuestions.length - 1 ? '결과 보기' : '다음'}
             <ArrowRight className="w-4 h-4" />

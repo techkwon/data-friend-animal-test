@@ -15,20 +15,20 @@ const HomeScreen = ({ onStart }: HomeScreenProps) => {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-full mb-6 shadow-glow">
             <ShieldCheck className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             동물과 함께 하는
             <br />
             <span className="text-primary">데이터 보안 습관 테스트</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             교사를 위한 재미있는 보안 성향 진단 퀴즈
-            <br />
+            <br className="hidden sm:block" />
             나만의 동물 페르소나를 발견하고 보안 습관을 점검해보세요!
           </p>
         </div>
 
         {/* 특징 카드들 */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
           <Card className="border-0 shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-6 text-center">
               <div className="w-12 h-12 bg-quiz-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -75,7 +75,7 @@ const HomeScreen = ({ onStart }: HomeScreenProps) => {
           <Button 
             onClick={onStart}
             size="lg"
-            className="bg-gradient-primary hover:opacity-90 text-white px-12 py-4 text-lg font-semibold rounded-xl shadow-card hover:shadow-glow transition-all duration-300 hover:scale-105"
+            className="bg-gradient-primary hover:opacity-90 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-card hover:shadow-glow transition-all duration-300 hover:scale-105"
           >
             🎯 테스트 시작하기
           </Button>
@@ -89,7 +89,7 @@ const HomeScreen = ({ onStart }: HomeScreenProps) => {
           <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
             이런 분들에게 추천해요! 🎯
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="text-4xl mb-3">👩‍🏫</div>
               <h3 className="font-semibold text-foreground mb-2">초·중·고 교사</h3>
